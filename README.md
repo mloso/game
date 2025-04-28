@@ -5,7 +5,7 @@
 </h1>
 
 <div align="center">
-  bot
+  game
   <br />
   <a href="#about"><strong>Explore the screenshots »</strong></a>
   <br />
@@ -16,7 +16,6 @@
 <summary>Table of Contents</summary>
 
 - [About](#about)
-    - [Built With](#built-with)
 - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
