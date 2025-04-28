@@ -1,7 +1,6 @@
 const API_URL = import.meta.env.VITE_HTTP_URL;
 
 const apiBase = async (url: string, body: object) => {
-    console.log(`${API_URL}` + `${url}`);
     const response = await fetch(`${API_URL}` + `${url}`, {
         method: "POST",
         headers: {

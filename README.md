@@ -49,7 +49,7 @@
 
 ### Prerequisites
 
-> linux docker npm
+> linux docker npm git
 
 ### Installation
 
