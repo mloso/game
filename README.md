@@ -55,7 +55,7 @@
 ```shell
 git clone https://github.com/mloso/game && cd game
 mv .env_dist .env  # edit your environment variables (optional)
-docker compose -f docker/compose/alembic.yml -f docker/compose/database.yml -f docker/compose/networks.yml --env-file .env up --build
+docker compose -f docker/compose/alembic.yml -f docker/compose/database.yml -f docker/compose/networks.yml --env-file .env up --build --abort-on-container-exit
 docker compose -f docker/compose/app.yml -f docker/compose/database.yml -f docker/compose/redis.yml -f docker/compose/networks.yml --env-file .env up --build
 npm install
 npm run build
