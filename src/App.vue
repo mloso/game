@@ -10,7 +10,7 @@ const router = useRouter();
 
 onMounted(async () => {
   const isAuthenticated = localStorage.getItem("access_token");
-  if (isAuthenticated && window.location.pathname === "/") {
+  if (isAuthenticated) {
     await router.push({name: "game"});
   }
 });

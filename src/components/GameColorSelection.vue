@@ -17,7 +17,7 @@
 
     <div class="players-waiting">
       <div>
-        Игра #{{ props.game?.id }}
+        Игра - {{ props.game?.id }}
       </div>
       <div>
         Ожидаем игроков... ({{ props.game?.players.length }})
