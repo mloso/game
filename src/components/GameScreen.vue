@@ -9,7 +9,8 @@
             class="player-badge"
             :style="{ backgroundColor: player.color }"
         >
-          {{ props.me.username === player.username ? 'You' : player.username }}: {{ player.score }}
+          <b v-if="props.me.username === player.username">player.username: {{ player.score }}</b>
+          <i v-else>player.username: {{ player.score }}</i>
         </div>
       </div>
     </div>
@@ -24,7 +25,7 @@
             :key="x"
             class="cell"
             :style="{
-            backgroundColor: cell.player ? cell.player.color : '#f0f0f0',
+            backgroundColor: cell.player ? cell.player.color : 'white',
             cursor: 'pointer'
           }"
             @click="emits('move', x, y)"
