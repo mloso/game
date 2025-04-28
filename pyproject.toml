@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "game"
+version = "1.0"
+description = "Backend for game."
+authors = ["mlosu"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+python-dotenv = "^1.1.0"
+python-multipart = "^0.0.20"
+colorlog = "^6.9.0"
+stringcase = "^1.2.0"
+apscheduler = "^3.11.0"
+pydantic = "^2.11.3"
+pydantic-settings = "^2.9.1"
+fastapi = "^0.115.12"
+fastapi-distributed-websocket = "^0.2.0"
+uvicorn = "^0.34.2"
+redis = "^5.2.1"
+sqlalchemy = "^2.0.40"
+alembic = "^1.15.2"
+asyncpg = "^0.30.0"
+pyjwt = "^2.10.1"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^4.2.0"
+black = "^25.1.0"
+ruff = "^0.11.7"
+isort = "^6.0.1"
+
+[tool.ruff]
+line-length = 99
+exclude = [
+    ".git",
+    ".venv",
+]
+force-exclude = true
+
+[tool.black]
+line-length = 99
+exclude = '''
+(
+    \.git
+    \.ruff_cache
+    \.venv
+)
+'''
+
+[tool.isort]
+profile = "black"
+src_paths = [
+    "app",
+]

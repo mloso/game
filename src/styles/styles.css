@@ -1,0 +1,28 @@
+.btn {
+    padding: 10px 20px;
+    background-color: #42b983;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #3aa876;
+}
+
+.btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.exit-btn {
+    background-color: #ff4444;
+}
+
+.exit-btn:hover {
+    background-color: #cc0000;
+}

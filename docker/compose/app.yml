@@ -1,0 +1,23 @@
+services:
+  app:
+    image: app:latest
+    build:
+      context: ${PWD}
+      dockerfile: docker/Dockerfile
+    command: /bin/bash -c \
+      "echo '[+] Running Backend' && \
+      python main.py"
+    volumes:
+      - ${PWD}/app:/app
+    env_file:
+      - ${PWD}/.env
+    depends_on:
+      database:
+        condition: service_healthy
+      redis_service:
+        condition: service_healthy
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - game
+    restart: always
