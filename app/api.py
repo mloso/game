@@ -105,9 +105,7 @@ async def parse_event(
                 connection=connection, manager=manager, redis_accessor=redis_accessor
             )
         case EventType.GET_ME:
-            await get_me_handler(
-                connection=connection, manager=manager, redis_accessor=redis_accessor
-            )
+            await get_me_handler(connection=connection, manager=manager, user=user)
         case EventType.JOIN:
             await join_handler(
                 connection=connection,
@@ -179,15 +177,10 @@ async def exit_handler(
 
 
 async def get_me_handler(
-    connection: Connection, manager: WebSocketManager, redis_accessor: RedisAccessor
+    connection: Connection,
+    manager: WebSocketManager,
+    user: UserModel,
 ) -> None:
-    try:
-        async with redis_accessor.access(connection.id, model=Player) as data:
-            async with async_sessionmaker.begin() as session:
-                user = await UserModel.get_by(session, username=data[connection.id].username)
-    except Exception:  # noqa
-        return await manager.send_error(connection_id=connection.id, event_type=EventType.GET_ME)
-
     await manager.send_message(
         connection_id=connection.id,
         response=ApplicationResponse[dict[str, Any]](

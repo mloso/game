@@ -9,7 +9,6 @@ from fastapi.responses import JSONResponse
 from pydantic import ValidationError
 from starlette import status
 
-from exc import ApplicationError
 from logger import logger
 
 
@@ -32,9 +31,7 @@ def add_exception_handler(
         if hasattr(default_exception_handler, "__status_code__"):
             status_code = default_exception_handler.__status_code__
         else:
-            if isinstance(exception, ApplicationError):
-                status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
-            elif isinstance(exception, HTTPException):
+            if isinstance(exception, HTTPException):
                 status_code = exception.status_code
             elif isinstance(exception, RequestValidationError):
                 status_code = status.HTTP_422_UNPROCESSABLE_ENTITY
@@ -66,7 +63,6 @@ def add_exception_handler(
 
 
 def create_exception_handlers(application: FastAPI) -> None:
-    add_exception_handler(application=application, exception_class_or_status_code=ApplicationError)
     add_exception_handler(application=application, exception_class_or_status_code=HTTPException)
     add_exception_handler(
         application=application,
