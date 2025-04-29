@@ -56,6 +56,9 @@ const stats = ref<{
 const {send} = useWebSocket(
     `${import.meta.env.VITE_WEBSOCKET_URL}/${localStorage.token}`,
     {
+      autoReconnect: {
+        delay: 1000
+      },
       onConnected() {
         getStats();
         getMe();
